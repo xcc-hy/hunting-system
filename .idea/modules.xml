@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/baseInfoSystem/baseInfoSystem.iml" filepath="$PROJECT_DIR$/baseInfoSystem/baseInfoSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/code-generator/code-generator.iml" filepath="$PROJECT_DIR$/code-generator/code-generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common_define/common_define.iml" filepath="$PROJECT_DIR$/common_define/common_define.iml" />
+      <module fileurl="file://$PROJECT_DIR$/huntingGateway/huntingGateway.iml" filepath="$PROJECT_DIR$/huntingGateway/huntingGateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jobSystem/jobSystem.iml" filepath="$PROJECT_DIR$/jobSystem/jobSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/userSystem/userSystem.iml" filepath="$PROJECT_DIR$/userSystem/userSystem.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/baseInfoSystem/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/baseInfoSystem/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/common_define/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/common_define/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/huntingGateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/huntingGateway/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jobSystem/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jobSystem/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/userSystem/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/userSystem/src/main/resources" charset="UTF-8" />
+  </component>
+</project>
