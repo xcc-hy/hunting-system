@@ -15,9 +15,9 @@ import io.swagger.annotations.ApiModelProperty;
  * @author xcc
  * @since 2022-12-26
  */
-@TableName("tbl_position_detail")
-@ApiModel(value="PositionDetail对象", description="")
-public class PositionDetail implements Serializable {
+@TableName("tbl_industry_detail")
+@ApiModel(value="IndustryDetail对象", description="")
+public class IndustryDetail implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -52,7 +52,7 @@ public class PositionDetail implements Serializable {
 
     @Override
     public String toString() {
-        return "PositionDetail{" +
+        return "IndustryDetail{" +
             "id=" + id +
             ", name=" + name +
             ", typeId=" + typeId +

@@ -1,12 +1,11 @@
 package com.study.hunting.domain;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-
 import java.io.Serializable;
-import java.util.Map;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * <p>
@@ -14,7 +13,7 @@ import java.util.Map;
  * </p>
  *
  * @author xcc
- * @since 2022-10-02
+ * @since 2022-12-26
  */
 @TableName("tbl_industry_type")
 @ApiModel(value="IndustryType对象", description="")
@@ -26,16 +25,6 @@ public class IndustryType implements Serializable {
     private Integer id;
 
     private String name;
-
-    private Map<String, String> industryList;
-
-    public Map<String, String> getIndustryList() {
-        return industryList;
-    }
-
-    public void setIndustryList(Map<String, String> industryList) {
-        this.industryList = industryList;
-    }
 
     public Integer getId() {
         return id;

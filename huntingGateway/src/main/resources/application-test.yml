@@ -1,0 +1,51 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: huntingGateway
+  cloud:
+    nacos:
+      discovery:
+        namespace: public
+        password: nacos
+        server-addr: 192.168.199.133:8848
+        username: nacos
+    gateway:
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        cors-configurations:
+          '[/**]':
+            allowedHeaders: '*'
+            allowCredentials: true
+            allowedOrigins: '*'
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+      discovery:
+        locator:
+          enabled: true # 让gateway可以发现nacos中的微服务
+      routes:
+        - id: userSystem
+          uri: lb://userSystem # lb指的是从nacos中按照名称获取微服务,并遵循负载均衡策略
+          predicates:
+            - Path=/user/**,/company/**
+            - Method=GET,POST,PUT,DELETE
+        - id: jobSystem
+          uri: lb://jobSystem # lb指的是从nacos中按照名称获取微服务,并遵循负载均衡策略
+          predicates:
+            - Path=/job/**
+            - Method=GET,POST,PUT,DELETE
+        - id: baidu
+          uri: https://www.baidu.com # lb指的是从nacos中按照名称获取微服务,并遵循负载均衡策略
+          predicates:
+            - Path=/baidu/**
+            - Method=GET,POST,PUT,DELETE
+
+
+
+
+
+

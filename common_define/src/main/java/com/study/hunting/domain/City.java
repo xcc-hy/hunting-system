@@ -9,24 +9,26 @@ import io.swagger.annotations.ApiModelProperty;
 
 /**
  * <p>
- * 
+ * 全国城市表
  * </p>
  *
  * @author xcc
  * @since 2022-12-26
  */
-@TableName("tbl_position_detail")
-@ApiModel(value="PositionDetail对象", description="")
-public class PositionDetail implements Serializable {
+@TableName("tbl_city")
+@ApiModel(value="City对象", description="全国城市表")
+public class City implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @ApiModelProperty(value = "关键字")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
+    @ApiModelProperty(value = "名称")
     private String name;
 
-    private Integer typeId;
+    private Integer pid;
 
     public Integer getId() {
         return id;
@@ -42,20 +44,20 @@ public class PositionDetail implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    public Integer getTypeId() {
-        return typeId;
+    public Integer getPid() {
+        return pid;
     }
 
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
+    public void setPid(Integer pid) {
+        this.pid = pid;
     }
 
     @Override
     public String toString() {
-        return "PositionDetail{" +
+        return "City{" +
             "id=" + id +
             ", name=" + name +
-            ", typeId=" + typeId +
+            ", pid=" + pid +
         "}";
     }
 }

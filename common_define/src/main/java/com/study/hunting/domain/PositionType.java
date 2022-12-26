@@ -9,14 +9,14 @@ import io.swagger.annotations.ApiModelProperty;
 
 /**
  * <p>
- * 职位的二级类别
+ * 
  * </p>
  *
  * @author xcc
- * @since 2022-10-02
+ * @since 2022-12-26
  */
 @TableName("tbl_position_type")
-@ApiModel(value="PositionType对象", description="职位的二级类别")
+@ApiModel(value="PositionType对象", description="")
 public class PositionType implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -25,8 +25,6 @@ public class PositionType implements Serializable {
     private Integer id;
 
     private String name;
-
-    private Integer classId;
 
     public Integer getId() {
         return id;
@@ -42,20 +40,12 @@ public class PositionType implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    public Integer getClassId() {
-        return classId;
-    }
-
-    public void setClassId(Integer classId) {
-        this.classId = classId;
-    }
 
     @Override
     public String toString() {
         return "PositionType{" +
             "id=" + id +
             ", name=" + name +
-            ", classId=" + classId +
         "}";
     }
 }
