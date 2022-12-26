@@ -6,21 +6,40 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="code-generator" />
+        <module name="fileManagerSystem" />
         <module name="jobSystem" />
         <module name="huntingGateway" />
+        <module name="hunting-job" />
         <module name="baseInfoSystem" />
-        <module name="code-generator" />
         <module name="userSystem" />
         <module name="common_define" />
+        <module name="hunting-user" />
+        <module name="hunting-gateway" />
+        <module name="baseInfoClient" />
+        <module name="base-info" />
+        <module name="fileManagerClient" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
+      <module name="base-info" target="1.8" />
+      <module name="baseInfoClient" target="1.8" />
       <module name="baseInfoSystem" target="1.8" />
       <module name="code-generator" target="8" />
       <module name="common_define" target="1.8" />
+      <module name="fileManagerClient" target="1.8" />
+      <module name="fileManagerSystem" target="1.8" />
+      <module name="hunting-gateway" target="1.8" />
+      <module name="hunting-job" target="1.8" />
+      <module name="hunting-user" target="1.8" />
       <module name="huntingGateway" target="1.8" />
       <module name="jobSystem" target="1.8" />
       <module name="userSystem" target="1.8" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="fileManagerSystem" options="" />
+    </option>
   </component>
 </project>

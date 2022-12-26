@@ -18,11 +18,11 @@ public interface UserService extends IService<User> {
 
     ResultVO<User> register(User user) throws Exception;
 
-    ResultVO<User> updateBaseInfo(User user, String userId) throws Exception;
+    ResultVO<User> updateBaseInfo(User user, Integer userId) throws Exception;
 
-    ResultVO<User> updatePassword(User user, String userId, String newPassword) throws Exception;
+    ResultVO<User> updatePassword(User user, Integer userId, String newPassword) throws Exception;
 
-    ResultVO freeze(String userId, String targetId);
+    ResultVO freeze(Integer userId, Integer targetId);
 
-    ResultVO unfreeze(String userId, String targetId);
+    ResultVO unfreeze(Integer userId, Integer targetId);
 }

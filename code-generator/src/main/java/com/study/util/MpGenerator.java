@@ -51,7 +51,7 @@ public class MpGenerator {
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("root");
-        dsc.setUrl("jdbc:mysql://192.168.199.133:3306/hunting_job?serverTimezone=UTC");
+        dsc.setUrl("jdbc:mysql://localhost:3306/hunting_info?serverTimezone=UTC");
         mpg.setDataSource(dsc);
 
         // 策略配置

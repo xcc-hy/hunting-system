@@ -4,6 +4,8 @@ mybatis:
 server:
   port: 8083
 spring:
+  main:
+    allow-bean-definition-overriding: true
   application:
     name: baseInfoSystem
   cloud:
@@ -11,22 +13,22 @@ spring:
       discovery:
         namespace: public
         password: nacos
-        server-addr: 192.168.199.133:8848
+        server-addr: 192.168.195.136:8848
         username: nacos
     sentinel:
       eager: true
       transport:
-        dashboard: localhost:8080
+        dashboard: 192.168.195.136:8081
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     name: defaultDataSource
     password: root
-    url: jdbc:mysql://192.168.199.133:3306/hunting_info?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/hunting_info?serverTimezone=UTC
     username: root
   session:
     store-type: redis
     redis:
-      host: 192.168.199.133
+      host: 192.168.195.136
       database: 0
       port: 6379
       timeout: 3600
@@ -34,3 +36,9 @@ spring:
       lettuce.pool.max-wait: -1ms
       lettuce.pool.max-idle: 8
       lettuce.pool.min-idle: 1
+
+management:
+  endpoint:
+    web:
+      exposure:
+        include:'*'

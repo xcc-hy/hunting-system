@@ -12,6 +12,7 @@ public enum ResponseCode {
     UNKNOWN_ERROR(2000, "未知错误"),
     PARAMETER_ILLEGAL(2001, "参数不合法"),
     TOKEN_INVALID(2002, "无效的token"),
+    PRIMARY_ID_ERROR(2003, "条目不存在"),
     TOKEN_MISSION(2005, "token缺失"),
     REFRESH_TOKEN_INVALID(2006, "刷新token无效"),
     NO_OPERATION_PERMISSION(2007, "没有操作权限");

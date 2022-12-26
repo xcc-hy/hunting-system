@@ -19,7 +19,7 @@ public class TokenUtils {
     private final static String SECRET = "hunting-xcc-secret-token-base-on-jwt";
     private final static SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
-    public static String getToken(String userId) {
+    public static String getToken(Integer userId) {
         //token的Header信息
         Map<String, Object> map = new HashMap<>();
         map.put("alg", "HS256");
@@ -38,7 +38,7 @@ public class TokenUtils {
     }
 
     public static void main(String[] args) throws Exception {
-        String token = TokenUtils.getToken("12");
+        String token = TokenUtils.getToken(12);
         System.out.println(token);
         Claims claims = TokenUtils.parseToken(token);
         System.out.println(claims.get("id"));

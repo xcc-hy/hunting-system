@@ -3,7 +3,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.study</groupId>
-    <artifactId>hunting</artifactId>
+    <artifactId>hunting-user</artifactId>
     <version>0.0.1</version>
     <name>userSystem</name>
     <description>for user login and registration</description>
@@ -37,10 +37,10 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
@@ -109,6 +109,11 @@
             <artifactId>common_define</artifactId>
             <version>1.0</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.study</groupId>-->
+<!--            <artifactId>baseInfoClient</artifactId>-->
+<!--            <version>0.0.1-SNAPSHOT</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <dependencyManagement>

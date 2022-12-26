@@ -31,13 +31,13 @@ public class UserController {
 
     @PutMapping(value = "/update/base")
     @ApiOperation(value = "更新用户基本信息")
-    public ResultVO<User> updateBaseInfo(User user, String userId) throws Exception {
+    public ResultVO<User> updateBaseInfo(User user, Integer userId) throws Exception {
         return userService.updateBaseInfo(user, userId);
     }
 
     @GetMapping(value = "/update/token")
     @ApiOperation(value = "更新token")
-    public ResultVO updateToken(String userId) {
+    public ResultVO updateToken(Integer userId) {
         ResultVO result = new ResultVO<>();
         result.setResponseCode(ResponseCode.SUCCESS);
         result.setToken(TokenUtils.getToken(userId));
@@ -46,19 +46,19 @@ public class UserController {
 
     @PutMapping(value = "/update/password")
     @ApiOperation(value = "更新用户密码")
-    public ResultVO<User> updatePassword(User user, String userId, String newPassword) throws Exception {
+    public ResultVO<User> updatePassword(User user, Integer userId, String newPassword) throws Exception {
         return userService.updatePassword(user, userId, newPassword);
     }
 
     @PutMapping(value = "/freeze/{targetId}")
     @ApiOperation(value = "冻结用户")
-    public ResultVO freeze(String userId, @PathVariable String targetId) {
+    public ResultVO freeze(Integer userId, @PathVariable Integer targetId) {
         return userService.freeze(userId, targetId);
     }
 
     @PutMapping(value = "/unfreeze/{targetId}")
-    @ApiOperation(value = "冻结用户")
-    public ResultVO unfreeze(String userId, @PathVariable String targetId) {
+    @ApiOperation(value = "账户解冻")
+    public ResultVO unfreeze(Integer userId, @PathVariable Integer targetId) {
         return userService.unfreeze(userId, targetId);
     }
 }

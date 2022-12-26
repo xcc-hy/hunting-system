@@ -23,7 +23,7 @@ public class Company implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
-    private String id;
+    private Integer id;
 
     @ApiModelProperty(value = "公司简称")
     private String name;
@@ -49,16 +49,16 @@ public class Company implements Serializable {
     @ApiModelProperty(value = "公司法人")
     private String corporate;
 
-    public String getOwnerId() {
+    public Integer getOwnerId() {
         return ownerId;
     }
 
-    public void setOwnerId(String ownerId) {
+    public void setOwnerId(Integer ownerId) {
         this.ownerId = ownerId;
     }
 
     @ApiModelProperty(value = "注册人id")
-    private String ownerId;
+    private Integer ownerId;
 
     @ApiModelProperty(value = "公司成立时间")
     private String establishDate;
@@ -69,11 +69,11 @@ public class Company implements Serializable {
     @ApiModelProperty(value = "行业id")
     private Integer industryId;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public String getName() {

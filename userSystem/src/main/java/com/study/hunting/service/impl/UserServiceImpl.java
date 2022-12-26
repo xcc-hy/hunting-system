@@ -10,6 +10,7 @@ import com.study.hunting.util.DateTimeUtils;
 import com.study.hunting.util.MD5Utils;
 import com.study.hunting.util.TokenUtils;
 import com.study.hunting.vo.ResultVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -77,7 +78,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public ResultVO<User> updateBaseInfo(User user, String userId) {
+    public ResultVO<User> updateBaseInfo(User user, Integer userId) {
         ResultVO<User> result = new ResultVO<>();
         if (userId == null || !userId.equals(user.getId())) {
             result.setResponseCode(ResponseCode.NO_OPERATION_PERMISSION);
@@ -108,7 +109,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public ResultVO<User> updatePassword(User user, String userId, String newPassword) {
+    public ResultVO<User> updatePassword(User user, Integer userId, String newPassword) {
         ResultVO<User> result = new ResultVO<>();
         // 参数不合法
         if (newPassword == null || user.getPassword() == null) {
@@ -139,7 +140,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public ResultVO freeze(String userId, String targetId) {
+    public ResultVO freeze(Integer userId, Integer targetId) {
         ResultVO result = new ResultVO();
         User user = baseMapper.selectById(userId);
         if (user != null && "管理员".equals(user.getRoleName())) {
@@ -158,7 +159,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public ResultVO unfreeze(String userId, String targetId) {
+    public ResultVO unfreeze(Integer userId, Integer targetId) {
         ResultVO result = new ResultVO();
         User user = baseMapper.selectById(userId);
         if (user != null && "管理员".equals(user.getRoleName())) {

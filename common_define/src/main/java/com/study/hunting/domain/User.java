@@ -24,7 +24,7 @@ public class User implements Serializable {
 
     @ApiModelProperty(value = "id")
     @TableId(value = "id", type = IdType.AUTO)
-    private String id;
+    private Integer id;
 
     @ApiModelProperty(value = "姓名/昵称")
     private String name;
@@ -91,11 +91,11 @@ public class User implements Serializable {
     @ApiModelProperty(value = "是否为公司管理者")
     private String isManager;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public String getName() {

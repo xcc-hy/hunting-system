@@ -1,2 +1,15 @@
+com\study\hunting\domain\IndustryType.class
+com\study\hunting\pojo\TypeDetailPOJO.class
+com\study\hunting\domain\UserStar.class
+com\study\hunting\domain\Company.class
+com\study\hunting\domain\Job.class
+com\study\hunting\util\DateTimeUtils.class
+com\study\hunting\domain\PositionDetail.class
+com\study\hunting\domain\JobUserRelation.class
+com\study\hunting\domain\PositionType.class
+com\study\hunting\domain\User.class
+com\study\hunting\util\MD5Utils.class
+com\study\hunting\util\IdSecretUtils.class
+com\study\hunting\util\TokenUtils.class
 com\study\hunting\enums\ResponseCode.class
 com\study\hunting\vo\ResultVO.class

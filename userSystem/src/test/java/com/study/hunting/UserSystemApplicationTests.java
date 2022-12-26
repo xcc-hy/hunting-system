@@ -22,17 +22,17 @@ class UserSystemApplicationTests {
 
     @Test
     void contextLoads() throws IllegalBlockSizeException, BadPaddingException {
-        User user = userMapper.selectById("1");
+        User user = userMapper.selectById(1);
         System.out.println(user.getEducation());
         System.out.println(user.getId());
     }
 
     @Test
     void test01() throws Exception {
-        User user = userService.getById("2");
+        User user = userService.getById(2);
         System.out.println(user.getId());
         user.setSkill("");
-        ResultVO<User> userResultVO = userService.updateBaseInfo(user, "2");
+        ResultVO<User> userResultVO = userService.updateBaseInfo(user, 2);
         System.out.println(userResultVO.getMsg());
     }
 

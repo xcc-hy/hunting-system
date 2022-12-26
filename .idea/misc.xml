@@ -5,10 +5,12 @@
       <list>
         <option value="$PROJECT_DIR$/userSystem/pom.xml" />
         <option value="$PROJECT_DIR$/common_define/pom.xml" />
-        <option value="$PROJECT_DIR$/baseInfoSystem/pom.xml" />
         <option value="$PROJECT_DIR$/jobSystem/pom.xml" />
         <option value="$PROJECT_DIR$/huntingGateway/pom.xml" />
         <option value="$PROJECT_DIR$/code-generator/pom.xml" />
+        <option value="$PROJECT_DIR$/baseInfoClient/pom.xml" />
+        <option value="$PROJECT_DIR$/baseInfoSystem/pom.xml" />
+        <option value="$PROJECT_DIR$/fileManagerSystem/pom.xml" />
       </list>
     </option>
   </component>
