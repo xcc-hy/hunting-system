@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
  * </p>
  *
  * @author xcc
- * @since 2022-10-02
+ * @since 2022-12-30
  */
 @TableName("tbl_job")
 @ApiModel(value="Job对象", description="")
@@ -24,44 +24,56 @@ public class Job implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
+    @ApiModelProperty(value = "创建者id")
     private Integer ownerId;
 
+    @ApiModelProperty(value = "公司id")
+    private Integer companyId;
+
+    @ApiModelProperty(value = "产业类别id")
+    private Integer industryId;
+
+    @ApiModelProperty(value = "职位id")
     private Integer positionId;
 
-    @ApiModelProperty(value = "名字")
+    @ApiModelProperty(value = "地点id")
+    private Integer locationId;
+
+    @ApiModelProperty(value = "工作名字")
     private String name;
 
     @ApiModelProperty(value = "是否为实习")
     private String isPractice;
 
-    @ApiModelProperty(value = "最低薪资")
+    @ApiModelProperty(value = "最低工资（千元）")
     private Double startPrice;
 
-    @ApiModelProperty(value = "最高薪资")
+    @ApiModelProperty(value = "最高工资（千元）")
     private Double endPrice;
 
     @ApiModelProperty(value = "学历要求")
     private String education;
 
-    @ApiModelProperty(value = "工作经历要求")
+    @ApiModelProperty(value = "工作经验要求")
     private Integer workYear;
 
-    @ApiModelProperty(value = "招收人数")
+    @ApiModelProperty(value = "招收数量")
     private Integer requiredNum;
 
-    @ApiModelProperty(value = "工作介绍")
+    @ApiModelProperty(value = "介绍")
     private String introduce;
 
-    @ApiModelProperty(value = "当前状态（正在招聘、招聘结束、、、）")
+    @ApiModelProperty(value = "状态")
     private String status;
 
-    @ApiModelProperty(value = "投递简历人数")
+    @ApiModelProperty(value = "投递人数")
     private Integer deliverNum;
 
     @ApiModelProperty(value = "面试人数")
     private Integer auditionNum;
 
-    private String createTime;
+    @ApiModelProperty(value = "创建时间")
+    private String createDate;
 
     public Integer getId() {
         return id;
@@ -77,12 +89,33 @@ public class Job implements Serializable {
     public void setOwnerId(Integer ownerId) {
         this.ownerId = ownerId;
     }
+    public Integer getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Integer companyId) {
+        this.companyId = companyId;
+    }
+    public Integer getIndustryId() {
+        return industryId;
+    }
+
+    public void setIndustryId(Integer industryId) {
+        this.industryId = industryId;
+    }
     public Integer getPositionId() {
         return positionId;
     }
 
     public void setPositionId(Integer positionId) {
         this.positionId = positionId;
+    }
+    public Integer getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(Integer locationId) {
+        this.locationId = locationId;
     }
     public String getName() {
         return name;
@@ -161,12 +194,12 @@ public class Job implements Serializable {
     public void setAuditionNum(Integer auditionNum) {
         this.auditionNum = auditionNum;
     }
-    public String getCreateTime() {
-        return createTime;
+    public String getCreateDate() {
+        return createDate;
     }
 
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
     }
 
     @Override
@@ -174,7 +207,10 @@ public class Job implements Serializable {
         return "Job{" +
             "id=" + id +
             ", ownerId=" + ownerId +
+            ", companyId=" + companyId +
+            ", industryId=" + industryId +
             ", positionId=" + positionId +
+            ", locationId=" + locationId +
             ", name=" + name +
             ", isPractice=" + isPractice +
             ", startPrice=" + startPrice +
@@ -186,7 +222,7 @@ public class Job implements Serializable {
             ", status=" + status +
             ", deliverNum=" + deliverNum +
             ", auditionNum=" + auditionNum +
-            ", createTime=" + createTime +
+            ", createDate=" + createDate +
         "}";
     }
 }

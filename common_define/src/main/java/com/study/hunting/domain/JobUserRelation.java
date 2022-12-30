@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
  * </p>
  *
  * @author xcc
- * @since 2022-10-02
+ * @since 2022-12-30
  */
 @TableName("tbl_job_user_relation")
 @ApiModel(value="JobUserRelation对象", description="")
@@ -28,13 +28,11 @@ public class JobUserRelation implements Serializable {
 
     private Integer jobId;
 
-    @ApiModelProperty(value = "当前进度")
     private String progress;
 
-    @ApiModelProperty(value = "当前状态")
     private String status;
 
-    private String createTime;
+    private String createDate;
 
     public Integer getId() {
         return id;
@@ -71,12 +69,12 @@ public class JobUserRelation implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
-    public String getCreateTime() {
-        return createTime;
+    public String getCreateDate() {
+        return createDate;
     }
 
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
     }
 
     @Override
@@ -87,7 +85,7 @@ public class JobUserRelation implements Serializable {
             ", jobId=" + jobId +
             ", progress=" + progress +
             ", status=" + status +
-            ", createTime=" + createTime +
+            ", createDate=" + createDate +
         "}";
     }
 }

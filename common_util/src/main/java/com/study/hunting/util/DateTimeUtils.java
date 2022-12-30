@@ -17,6 +17,6 @@ public class DateTimeUtils {
     }
 
     public static void main(String[] args) {
-        System.out.println(DateTimeUtils.nowTimeFormat());
+        System.out.println(DateTimeUtils.nowDateFormat());
     }
 }
