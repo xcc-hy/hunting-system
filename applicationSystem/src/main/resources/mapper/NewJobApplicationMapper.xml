@@ -7,9 +7,9 @@
         <id column="id" property="id" />
         <result column="application_id" property="applicationId" />
         <result column="job_id" property="jobId" />
-        <result column="application_date" property="applicationDate" />
+        <result column="application_time" property="applicationTime" />
         <result column="audit_id" property="auditId" />
-        <result column="audit_date" property="auditDate" />
+        <result column="audit_time" property="auditTime" />
         <result column="review_reason" property="reviewReason" />
     </resultMap>
 

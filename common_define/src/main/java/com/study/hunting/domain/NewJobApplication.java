@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * <p>
@@ -19,6 +20,10 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(value="NewJobApplication对象", description="")
 public class NewJobApplication implements Serializable {
 
+//    public static long getSerialVersionUID() {
+//        return serialVersionUID;
+//    }
+//
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
@@ -28,13 +33,24 @@ public class NewJobApplication implements Serializable {
 
     private Integer jobId;
 
-    private String applicationDate;
+    private String applicationTime;
 
     private Integer auditId;
 
-    private String auditDate;
+    private String auditTime;
 
     private String reviewReason;
+
+    @ApiModelProperty("该审核结果：0，未审核；1，通过；2，未通过；4，管理员冻结")
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public Integer getId() {
         return id;
@@ -57,12 +73,12 @@ public class NewJobApplication implements Serializable {
     public void setJobId(Integer jobId) {
         this.jobId = jobId;
     }
-    public String getApplicationDate() {
-        return applicationDate;
+    public String getApplicationTime() {
+        return applicationTime;
     }
 
-    public void setApplicationDate(String applicationDate) {
-        this.applicationDate = applicationDate;
+    public void setApplicationTime(String applicationTime) {
+        this.applicationTime = applicationTime;
     }
     public Integer getAuditId() {
         return auditId;
@@ -71,12 +87,12 @@ public class NewJobApplication implements Serializable {
     public void setAuditId(Integer auditId) {
         this.auditId = auditId;
     }
-    public String getAuditDate() {
-        return auditDate;
+    public String getAuditTime() {
+        return auditTime;
     }
 
-    public void setAuditDate(String auditDate) {
-        this.auditDate = auditDate;
+    public void setAuditTime(String auditTime) {
+        this.auditTime = auditTime;
     }
     public String getReviewReason() {
         return reviewReason;
@@ -92,9 +108,9 @@ public class NewJobApplication implements Serializable {
             "id=" + id +
             ", applicationId=" + applicationId +
             ", jobId=" + jobId +
-            ", applicationDate=" + applicationDate +
+            ", applicationDate=" + applicationTime +
             ", auditId=" + auditId +
-            ", auditDate=" + auditDate +
+            ", auditDate=" + auditTime +
             ", reviewReason=" + reviewReason +
         "}";
     }

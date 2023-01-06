@@ -19,6 +19,10 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(value="NewCompanyApplication对象", description="")
 public class NewCompanyApplication implements Serializable {
 
+//    public static long getSerialVersionUID() {
+//        return serialVersionUID;
+//    }
+//
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "id")
@@ -64,17 +68,28 @@ public class NewCompanyApplication implements Serializable {
     @ApiModelProperty(value = "新公司营业执照位置")
     private String companyImgPath;
 
+    @ApiModelProperty(value = "详细地址")
+    private String companyAddress;
+
     @ApiModelProperty(value = "申请时间")
-    private String applicationDate;
+    private String applicationTime;
 
     @ApiModelProperty(value = "审核时间")
-    private String auditDate;
+    private String auditTime;
 
     @ApiModelProperty(value = "审核人id")
     private Integer auditorId;
 
     @ApiModelProperty(value = "审核意见")
     private String reviewReason;
+
+    public String getCompanyAddress() {
+        return companyAddress;
+    }
+
+    public void setCompanyAddress(String address) {
+        this.companyAddress = address;
+    }
 
     public Integer getId() {
         return id;
@@ -174,19 +189,19 @@ public class NewCompanyApplication implements Serializable {
     public void setCompanyImgPath(String companyImgPath) {
         this.companyImgPath = companyImgPath;
     }
-    public String getApplicationDate() {
-        return applicationDate;
+    public String getApplicationTime() {
+        return applicationTime;
     }
 
-    public void setApplicationDate(String applicationDate) {
-        this.applicationDate = applicationDate;
+    public void setApplicationTime(String applicationTime) {
+        this.applicationTime = applicationTime;
     }
-    public String getAuditDate() {
-        return auditDate;
+    public String getAuditTime() {
+        return auditTime;
     }
 
-    public void setAuditDate(String auditDate) {
-        this.auditDate = auditDate;
+    public void setAuditTime(String auditTime) {
+        this.auditTime = auditTime;
     }
     public Integer getAuditorId() {
         return auditorId;
@@ -220,8 +235,8 @@ public class NewCompanyApplication implements Serializable {
             ", companyIndustryId=" + companyIndustryId +
             ", companyIntroduction=" + companyIntroduction +
             ", companyImgPath=" + companyImgPath +
-            ", applicationDate=" + applicationDate +
-            ", auditDate=" + auditDate +
+            ", applicationDate=" + applicationTime +
+            ", auditDate=" + auditTime +
             ", auditorId=" + auditorId +
             ", reviewReason=" + reviewReason +
         "}";

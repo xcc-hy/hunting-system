@@ -49,6 +49,17 @@ public class Company implements Serializable {
     @ApiModelProperty(value = "公司法人")
     private String corporate;
 
+    @ApiModelProperty(value = "详细地址")
+    private String address;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public Integer getOwnerId() {
         return ownerId;
     }

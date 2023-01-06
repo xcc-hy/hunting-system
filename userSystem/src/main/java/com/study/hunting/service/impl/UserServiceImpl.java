@@ -2,6 +2,7 @@ package com.study.hunting.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.study.hunting.client.FileManagerClient;
 import com.study.hunting.dao.UserMapper;
 import com.study.hunting.domain.User;
 import com.study.hunting.enums.ResponseCode;
@@ -12,6 +13,11 @@ import com.study.hunting.util.TokenUtils;
 import com.study.hunting.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.xml.transform.Result;
+import java.util.List;
 
 /**
  * <p>
@@ -23,6 +29,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
+
+    @Autowired
+    private FileManagerClient fileManagerClient;
 
     public User selectByEmail(String email) throws Exception {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
@@ -59,6 +68,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         } else {
             user.setPassword(MD5Utils.encrypt(user.getEmail(), user.getPassword())); // 加密密码
             // 其他基本信息的初始化
+            user.setId(null);
+            user.setIsManager(null);
             user.setRoleName("求职者");
             user.setStatus("1");
             user.setImgPath(null);
@@ -175,5 +186,83 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             result.setResponseCode(ResponseCode.NO_OPERATION_PERMISSION);
         }
         return result;
+    }
+
+    @Override
+    public Boolean isManager(Integer userId) {
+        List<Object> objects = baseMapper.selectObjs(new QueryWrapper<User>().select("role_name").eq("id", userId));
+        if (objects.size() == 0) return false;
+        return "管理员".equals(objects.get(0));
+    }
+
+    @Override
+    public ResultVO<Boolean> isEnterprise(Integer userId) {
+        ResultVO<Boolean> result = new ResultVO<>();
+        List<Object> objects = baseMapper.selectObjs(new QueryWrapper<User>().select("role_name").eq("id", userId));
+        if (objects.size() == 0) {
+            result.setData(false);
+        }
+        result.setData("企业".equals(objects.get(0)));
+        return result;
+    }
+
+    @Override
+    public ResultVO<Integer> getCompanyIdById(Integer userId) {
+        ResultVO<Integer> result = new ResultVO<>();
+        List<Object> objects = baseMapper.selectObjs(new QueryWrapper<User>().eq("id", userId).select("company_id"));
+        if (objects == null || objects.size() == 0) {
+            result.setResponseCode(ResponseCode.FAIL);
+        } else {
+            result.setData((Integer) objects.get(0));
+        }
+        return result;
+    }
+
+    @Override
+    public ResultVO<String> getNameById(Integer userId) {
+        ResultVO<String> result = new ResultVO<>();
+        List<Object> objects = baseMapper.selectObjs(new QueryWrapper<User>().eq("id", userId).select("name"));
+        if (objects == null || objects.size() == 0) {
+            result.setResponseCode(ResponseCode.FAIL);
+        } else {
+            result.setData((String) objects.get(0));
+        }
+        return result;
+    }
+
+    @Override
+    public ResultVO<String> updateIco(Integer userId, MultipartFile multipartFile) {
+        ResultVO<String> result = new ResultVO<>();
+        if (baseMapper.selectCount(new QueryWrapper<User>().eq("id", userId)) == 1) {
+            ResultVO<String> fileResult = fileManagerClient.saveIco(multipartFile);
+            if (fileResult.getCode() == ResponseCode.SUCCESS.getCode()) {
+                User user = new User();
+                user.setId(userId);
+                user.setImgPath(fileResult.getData());
+                baseMapper.updateById(user);
+                result.setData(fileResult.getData());
+            } else {
+                return fileResult;
+            }
+        } else {
+            result.setResponseCode(ResponseCode.PARAMETER_ILLEGAL);
+        }
+        return result;
+    }
+
+    @Override
+    @Transactional
+    public Boolean upgradeEnterprise(Integer userId, Integer id, Boolean isManager, Integer companyId) {
+        if (isManager && !isManager(userId)) return false;
+        User user = baseMapper.selectById(id);
+        if (user == null) return false;
+        user.setRoleName("企业");
+        if (user.getIsManager() == null || "0".equals(user.getIsManager())) {
+            user.setIsManager(isManager ? "1" : "0");
+        }
+        user.setCompanyId(companyId);
+        baseMapper.updateById(user);
+//        int a = 1 / 0;
+        return true;
     }
 }

@@ -37,6 +37,7 @@ public class ResultVO<T> {
 
     public void setData(T data) {
         this.data = data;
+        setResponseCode(ResponseCode.SUCCESS); // 默认成功
     }
 
     public void setResponseCode(ResponseCode responseCode) {

@@ -8,32 +8,32 @@
         <outputRelativeToContentRoot value="true" />
         <module name="code-generator" />
         <module name="fileManagerSystem" />
+        <module name="common_util" />
         <module name="jobSystem" />
         <module name="huntingGateway" />
-        <module name="hunting-job" />
         <module name="baseInfoSystem" />
-        <module name="userSystem" />
+        <module name="userClient" />
         <module name="common_define" />
-        <module name="hunting-user" />
-        <module name="hunting-gateway" />
+        <module name="userSystem" />
         <module name="baseInfoClient" />
-        <module name="base-info" />
+        <module name="jobClient" />
         <module name="fileManagerClient" />
+        <module name="applicationSystem" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
-      <module name="base-info" target="1.8" />
+      <module name="applicationSystem" target="1.8" />
       <module name="baseInfoClient" target="1.8" />
       <module name="baseInfoSystem" target="1.8" />
       <module name="code-generator" target="8" />
       <module name="common_define" target="1.8" />
+      <module name="common_util" target="8" />
       <module name="fileManagerClient" target="1.8" />
       <module name="fileManagerSystem" target="1.8" />
-      <module name="hunting-gateway" target="1.8" />
-      <module name="hunting-job" target="1.8" />
-      <module name="hunting-user" target="1.8" />
       <module name="huntingGateway" target="1.8" />
+      <module name="jobClient" target="1.8" />
       <module name="jobSystem" target="1.8" />
+      <module name="userClient" target="1.8" />
       <module name="userSystem" target="1.8" />
     </bytecodeTargetLevel>
   </component>

@@ -2,8 +2,10 @@
 server:
   port: 8085
 spring:
-  main:
-    allow-bean-definition-overriding: true
+  servlet:
+    multipart:
+      max-file-size: 1MB
+      max-request-size: 10MB
   application:
     name: fileManagerSystem
   cloud:
@@ -13,6 +15,7 @@ spring:
         password: nacos
         server-addr: 192.168.195.136:8848
         username: nacos
+        group: SEATA_GROUP
     sentinel:
       eager: true
       transport:

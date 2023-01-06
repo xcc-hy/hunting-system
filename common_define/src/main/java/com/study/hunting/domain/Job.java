@@ -19,6 +19,10 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(value="Job对象", description="")
 public class Job implements Serializable {
 
+//    public static long getSerialVersionUID() {
+//        return serialVersionUID;
+//    }
+//
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
@@ -63,7 +67,7 @@ public class Job implements Serializable {
     @ApiModelProperty(value = "介绍")
     private String introduce;
 
-    @ApiModelProperty(value = "状态")
+    @ApiModelProperty(value = "状态,0,等待审核；1，通过审核；2，未通过审核；3，发起者冻结(通过审核)；4，管理员冻结")
     private String status;
 
     @ApiModelProperty(value = "投递人数")
@@ -73,7 +77,18 @@ public class Job implements Serializable {
     private Integer auditionNum;
 
     @ApiModelProperty(value = "创建时间")
-    private String createDate;
+    private String createTime;
+
+    @ApiModelProperty(value = "工作详细地址")
+    private String address;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public Integer getId() {
         return id;
@@ -194,12 +209,12 @@ public class Job implements Serializable {
     public void setAuditionNum(Integer auditionNum) {
         this.auditionNum = auditionNum;
     }
-    public String getCreateDate() {
-        return createDate;
+    public String getCreateTime() {
+        return createTime;
     }
 
-    public void setCreateDate(String createDate) {
-        this.createDate = createDate;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
     @Override
@@ -222,7 +237,7 @@ public class Job implements Serializable {
             ", status=" + status +
             ", deliverNum=" + deliverNum +
             ", auditionNum=" + auditionNum +
-            ", createDate=" + createDate +
+            ", createDate=" + createTime +
         "}";
     }
 }

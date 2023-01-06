@@ -11,6 +11,11 @@
         <option value="$PROJECT_DIR$/baseInfoClient/pom.xml" />
         <option value="$PROJECT_DIR$/baseInfoSystem/pom.xml" />
         <option value="$PROJECT_DIR$/fileManagerSystem/pom.xml" />
+        <option value="$PROJECT_DIR$/common_util/pom.xml" />
+        <option value="$PROJECT_DIR$/fileManagerClient/pom.xml" />
+        <option value="$PROJECT_DIR$/applicationSystem/pom.xml" />
+        <option value="$PROJECT_DIR$/userClient/pom.xml" />
+        <option value="$PROJECT_DIR$/jobClient/pom.xml" />
       </list>
     </option>
   </component>

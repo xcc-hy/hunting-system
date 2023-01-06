@@ -12,9 +12,10 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler({Exception.class})
     public ResultVO<Exception> globalException(Exception e) {
+        e.printStackTrace();
         ResultVO<Exception> result = new ResultVO<>();
-        result.setResponseCode(ResponseCode.UNKNOWN_ERROR);
         result.setData(e);
+        result.setResponseCode(ResponseCode.UNKNOWN_ERROR);
         return result;
     }
 }

@@ -28,17 +28,17 @@ public class HrApplication implements Serializable {
     @ApiModelProperty(value = "申请人id")
     private Integer applicationId;
 
-    @ApiModelProperty(value = "申请状态")
+    @ApiModelProperty(value = "申请状态，0：等待审核；1，通过；2，拒绝")
     private String status;
 
     @ApiModelProperty(value = "申请公司id")
     private Integer companyId;
 
     @ApiModelProperty(value = "申请时间")
-    private String applicationDate;
+    private String applicationTime;
 
     @ApiModelProperty(value = "审核时间")
-    private String auditDate;
+    private String auditTime;
 
     @ApiModelProperty(value = "审核人id")
     private Integer auditorId;
@@ -71,19 +71,19 @@ public class HrApplication implements Serializable {
     public void setCompanyId(Integer companyId) {
         this.companyId = companyId;
     }
-    public String getApplicationDate() {
-        return applicationDate;
+    public String getApplicationTime() {
+        return applicationTime;
     }
 
-    public void setApplicationDate(String applicationDate) {
-        this.applicationDate = applicationDate;
+    public void setApplicationTime(String applicationTime) {
+        this.applicationTime = applicationTime;
     }
-    public String getAuditDate() {
-        return auditDate;
+    public String getAuditTime() {
+        return auditTime;
     }
 
-    public void setAuditDate(String auditDate) {
-        this.auditDate = auditDate;
+    public void setAuditTime(String auditTime) {
+        this.auditTime = auditTime;
     }
     public Integer getAuditorId() {
         return auditorId;
@@ -100,8 +100,8 @@ public class HrApplication implements Serializable {
             ", applicationId=" + applicationId +
             ", status=" + status +
             ", companyId=" + companyId +
-            ", applicationDate=" + applicationDate +
-            ", auditDate=" + auditDate +
+            ", applicationDate=" + applicationTime +
+            ", auditDate=" + auditTime +
             ", auditorId=" + auditorId +
         "}";
     }

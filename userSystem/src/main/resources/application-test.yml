@@ -10,11 +10,18 @@ spring:
     name: userSystem
   cloud:
     nacos:
+      config:
+        namespace: public
+        password: nacos
+        server-addr: 192.168.195.136:8848
+        username: nacos
+        group: SEATA_GROUP
       discovery:
         namespace: public
         password: nacos
         server-addr: 192.168.195.136:8848
         username: nacos
+        group: SEATA_GROUP
     sentinel:
       eager: true
       transport:
@@ -36,35 +43,37 @@ spring:
     lettuce.pool.max-wait: -1ms
     lettuce.pool.max-idle: 8
     lettuce.pool.min-idle: 1
-
+  transaction:
+    rollback-on-commit-failure: true
 ## 配置seata客户端的信息
-#seata:
-#  enabled: true
-#  enable-auto-data-source-proxy: false
-#  application-id: ${spring.application.name}
-#  tx-service-group: my_tx_group
-#  service:
-#    vgroup-mapping:
-#      my_tx_group: default
+seata:
+  enabled: true
+  enable-auto-data-source-proxy: false
+  application-id: ${spring.application.name}
+  tx-service-group: my_tx_group
+  service:
+    vgroup-mapping:
+      my_tx_group: default
 #  # 不使用注册中心和配置中心不加以下配置
 #  config:
 #    type: nacos
 #    nacos:
-#      server-addr: 192.168.195.136:8848
-#      group: "SEATA_GROUP"
-#      namespace: "seata"
-#      dataId: "seataServer.properties"
-#      username: "nacos"
-#      password: "nacos"
-#  registry:
-#    type: nacos
-#    nacos:
 #      application: seata-server
 #      server-addr: 192.168.195.136:8848
-#      group: "SEATA_GROUP"
-#      namespace: "seata"
-#      username: "nacos"
-#      password: "nacos"
+#      group: SEATA_GROUP
+#      namespace: public
+#      dataId: seataServer.properties
+#      username: nacos
+#      password: nacos
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: 192.168.195.136:8848
+      group: SEATA_GROUP
+      namespace: public
+      username: nacos
+      password: nacos
 
 management:
   endpoint:

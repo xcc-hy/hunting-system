@@ -2,18 +2,18 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/baseInfoSystem/base-info.iml" filepath="$PROJECT_DIR$/baseInfoSystem/base-info.iml" />
+      <module fileurl="file://$PROJECT_DIR$/applicationSystem/applicationSystem.iml" filepath="$PROJECT_DIR$/applicationSystem/applicationSystem.iml" />
       <module fileurl="file://$PROJECT_DIR$/baseInfoClient/baseInfoClient.iml" filepath="$PROJECT_DIR$/baseInfoClient/baseInfoClient.iml" />
       <module fileurl="file://$PROJECT_DIR$/baseInfoSystem/baseInfoSystem.iml" filepath="$PROJECT_DIR$/baseInfoSystem/baseInfoSystem.iml" />
       <module fileurl="file://$PROJECT_DIR$/code-generator/code-generator.iml" filepath="$PROJECT_DIR$/code-generator/code-generator.iml" />
       <module fileurl="file://$PROJECT_DIR$/common_define/common_define.iml" filepath="$PROJECT_DIR$/common_define/common_define.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common_util/common_util.iml" filepath="$PROJECT_DIR$/common_util/common_util.iml" />
       <module fileurl="file://$PROJECT_DIR$/fileManagerClient/fileManagerClient.iml" filepath="$PROJECT_DIR$/fileManagerClient/fileManagerClient.iml" />
       <module fileurl="file://$PROJECT_DIR$/fileManagerSystem/fileManagerSystem.iml" filepath="$PROJECT_DIR$/fileManagerSystem/fileManagerSystem.iml" />
-      <module fileurl="file://$PROJECT_DIR$/huntingGateway/hunting-gateway.iml" filepath="$PROJECT_DIR$/huntingGateway/hunting-gateway.iml" />
-      <module fileurl="file://$PROJECT_DIR$/jobSystem/hunting-job.iml" filepath="$PROJECT_DIR$/jobSystem/hunting-job.iml" />
-      <module fileurl="file://$PROJECT_DIR$/userSystem/hunting-user.iml" filepath="$PROJECT_DIR$/userSystem/hunting-user.iml" />
       <module fileurl="file://$PROJECT_DIR$/huntingGateway/huntingGateway.iml" filepath="$PROJECT_DIR$/huntingGateway/huntingGateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jobClient/jobClient.iml" filepath="$PROJECT_DIR$/jobClient/jobClient.iml" />
       <module fileurl="file://$PROJECT_DIR$/jobSystem/jobSystem.iml" filepath="$PROJECT_DIR$/jobSystem/jobSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/userClient/userClient.iml" filepath="$PROJECT_DIR$/userClient/userClient.iml" />
       <module fileurl="file://$PROJECT_DIR$/userSystem/userSystem.iml" filepath="$PROJECT_DIR$/userSystem/userSystem.iml" />
     </modules>
   </component>

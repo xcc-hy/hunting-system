@@ -15,6 +15,7 @@ spring:
         password: nacos
         server-addr: 192.168.195.136:8848
         username: nacos
+        group: SEATA_GROUP
     sentinel:
       eager: true
       transport:

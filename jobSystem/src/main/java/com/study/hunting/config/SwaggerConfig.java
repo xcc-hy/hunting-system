@@ -26,15 +26,15 @@ public class SwaggerConfig {
         boolean flag = environment.acceptsProfiles(profiles);
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(new ApiInfo(
-                        "application modal",
-                        "user's application and audit",
+                        "job modal",
+                        "job management",
                         "1.0",
                         "urn:tos",
                         new Contact("xcc", "baidu.com", "root@163.com"),
                         "Apache 2.0",
                         "www.baidu.com",
                         new ArrayList<>()))
-                .groupName("application")
+                .groupName("job")
                 .enable(flag)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.study.hunting.controller"))

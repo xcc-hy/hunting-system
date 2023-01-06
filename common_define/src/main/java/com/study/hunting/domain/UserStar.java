@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
  * </p>
  *
  * @author xcc
- * @since 2022-10-02
+ * @since 2022-12-30
  */
 @TableName("tbl_user_star")
 @ApiModel(value="UserStar对象", description="")
@@ -24,11 +24,11 @@ public class UserStar implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    private Integer userId;
-
     private Integer jobId;
 
-    private String createTime;
+    private Integer userId;
+
+    private String createDate;
 
     public Integer getId() {
         return id;
@@ -37,13 +37,6 @@ public class UserStar implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
     public Integer getJobId() {
         return jobId;
     }
@@ -51,21 +44,28 @@ public class UserStar implements Serializable {
     public void setJobId(Integer jobId) {
         this.jobId = jobId;
     }
-    public String getCreateTime() {
-        return createTime;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
     }
 
     @Override
     public String toString() {
         return "UserStar{" +
             "id=" + id +
-            ", userId=" + userId +
             ", jobId=" + jobId +
-            ", createTime=" + createTime +
+            ", userId=" + userId +
+            ", createDate=" + createDate +
         "}";
     }
 }

@@ -48,6 +48,7 @@ public class TokenFilter implements GlobalFilter {
         String path = request.getURI().getPath();
         // 可不登陆访问的服务直接放行
         if (antPathMatcher.match("/**/global/**", path)) return chain.filter(exchange);
+        if (antPathMatcher.match("/**/secret/**", path)) return getMono(response, ResponseCode.NO_OPERATION_PERMISSION);
         // 登陆验证
         String token = request.getHeaders().getFirst("Authorization");
         if (token == null) {
@@ -57,21 +58,24 @@ public class TokenFilter implements GlobalFilter {
         Claims claims;
         try {
             claims = TokenUtils.parseToken(token);
-            Map<String, String> map = new HashMap<>();
-            map.put("userId", (String) claims.get("id"));
-            if (request.getMethod() == HttpMethod.GET || request.getMethod() == HttpMethod.DELETE) {
-                return addParameterForGetMethod(exchange, chain, map);
-            } else if (request.getMethod() == HttpMethod.PUT){
-                return addParameterForPostMethod(exchange, chain, map);
-            } else {
-                MediaType contentType = request.getHeaders().getContentType();
-                if (MediaType.MULTIPART_FORM_DATA.equals(contentType)) {
-                    ServerHttpRequest build = request.mutate().header("userId", (String) claims.get("id")).build();
-                    return chain.filter(exchange.mutate().request(build).build());
-                } else {
-                    return addParameterForPostMethod(exchange, chain, map);
-                }
-            }
+            request = exchange.getRequest().mutate().header("userId", String.valueOf(claims.get("id"))).build();
+            return chain.filter(exchange.mutate().request(request).build());
+//            return chain.filter(exchange);
+//            Map<String, Integer> map = new HashMap<>();
+//            map.put("userId", (Integer) claims.get("id"));
+//            if (request.getMethod() == HttpMethod.GET || request.getMethod() == HttpMethod.DELETE) {
+//                return addParameterForGetMethod(exchange, chain, map);
+//            } else if (request.getMethod() == HttpMethod.PUT){
+//                return addParameterForGetMethod(exchange, chain, map);
+//            } else {
+//                MediaType contentType = request.getHeaders().getContentType();
+//                if (MediaType.MULTIPART_FORM_DATA.equals(contentType)) {
+//                    ServerHttpRequest build = request.mutate().header("userId", (String) claims.get("id")).build();
+//                    return chain.filter(exchange.mutate().request(build).build());
+//                } else {
+//                    return addParameterForPostMethod(exchange, chain, map);
+//                }
+//            }
         } catch (Exception e) {
             return getMono(response, ResponseCode.TOKEN_INVALID);
         }
@@ -100,7 +104,7 @@ public class TokenFilter implements GlobalFilter {
      * @param params
      * @return
      */
-    public Mono<Void> addParameterForGetMethod(ServerWebExchange exchange, GatewayFilterChain chain, Map<String, String> params) {
+    public Mono<Void> addParameterForGetMethod(ServerWebExchange exchange, GatewayFilterChain chain, Map<String, Integer> params) {
         URI uri = exchange.getRequest().getURI();
         StringBuilder query = new StringBuilder();
         String originalQuery = uri.getQuery();
@@ -132,7 +136,7 @@ public class TokenFilter implements GlobalFilter {
      * @param params
      * @return
      */
-    public Mono<Void> addParameterForPostMethod(ServerWebExchange exchange, GatewayFilterChain chain, Map<String, String> params) {
+    public Mono<Void> addParameterForPostMethod(ServerWebExchange exchange, GatewayFilterChain chain, Map<String, Integer> params) {
         ServerRequest serverRequest = ServerRequest.create(exchange, HandlerStrategies.withDefaults().messageReaders());
         Mono<String> modifiedBody = serverRequest.bodyToMono(String.class)
                 .flatMap(o -> {

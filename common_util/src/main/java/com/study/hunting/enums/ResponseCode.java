@@ -15,7 +15,8 @@ public enum ResponseCode {
     PRIMARY_ID_ERROR(2003, "条目不存在"),
     TOKEN_MISSION(2005, "token缺失"),
     REFRESH_TOKEN_INVALID(2006, "刷新token无效"),
-    NO_OPERATION_PERMISSION(2007, "没有操作权限");
+    NO_OPERATION_PERMISSION(2007, "没有操作权限"),
+    INVALID_OPERATION(2007, "操作不合法");
 
 
     private int code;

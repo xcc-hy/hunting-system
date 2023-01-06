@@ -19,6 +19,12 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
             <version>2.2.2.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>com.study</groupId>
+            <artifactId>common_util</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>

@@ -10,6 +10,7 @@ spring:
         password: nacos
         server-addr: 192.168.195.136:8848
         username: nacos
+        group: SEATA_GROUP
     gateway:
       globalcors:
         add-to-simple-url-handler-mapping: true
@@ -38,10 +39,20 @@ spring:
           predicates:
             - Path=/job/**
             - Method=GET,POST,PUT,DELETE
+        - id: applicationSystem
+          uri: lb://applicationSystem # lb指的是从nacos中按照名称获取微服务,并遵循负载均衡策略
+          predicates:
+            - Path=/newCompanyApplication/**,/hrApplication/**,/newJobApplication/**
+            - Method=GET,POST,PUT,DELETE
         - id: baseInfoSystem
           uri: lb://baseInfoSystem # lb指的是从nacos中按照名称获取微服务,并遵循负载均衡策略
           predicates:
             - Path=/city/**,/industryDetail/**,/positionDetail/**
+            - Method=GET,POST,PUT,DELETE
+        - id: fileManagerSystem
+          uri: lb://fileManagerSystem # lb指的是从nacos中按照名称获取微服务,并遵循负载均衡策略
+          predicates:
+            - Path=/fileManager/**
             - Method=GET,POST,PUT,DELETE
 
 

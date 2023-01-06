@@ -52,8 +52,8 @@
 
         <!-- 公共依赖 -->
         <dependency>
-            <groupId>com.study.hunting</groupId>
-            <artifactId>common_define</artifactId>
+            <groupId>com.study</groupId>
+            <artifactId>common_util</artifactId>
             <version>1.0</version>
         </dependency>
     </dependencies>
