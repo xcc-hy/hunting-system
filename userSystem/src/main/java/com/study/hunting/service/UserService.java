@@ -39,4 +39,9 @@ public interface UserService extends IService<User> {
 
     ResultVO<String> updateIco(Integer userId, MultipartFile multipartFile);
 
+    ResultVO<String> getEmailById(Integer userId);
+
+    Boolean isHunter(Integer userId);
+
+    User queryById(Integer id);
 }

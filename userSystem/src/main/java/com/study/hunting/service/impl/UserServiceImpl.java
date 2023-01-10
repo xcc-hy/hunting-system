@@ -79,8 +79,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             user.setIntroduce(null);
             user.setSkill(null);
             user.setInterest(null);
-            user.setDeliverNum(0);
-            user.setStarNum(0);
             user.setCreateTime(DateTimeUtils.nowDateFormat());
             int res = baseMapper.insert(user);
             result.setResponseCode(res == 1 ? ResponseCode.SUCCESS : ResponseCode.FAIL);
@@ -228,6 +226,33 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             result.setData((String) objects.get(0));
         }
         return result;
+    }
+
+    @Override
+    public ResultVO<String> getEmailById(Integer userId) {
+        ResultVO<String> result = new ResultVO<>();
+        List<Object> objects = baseMapper.selectObjs(new QueryWrapper<User>().eq("id", userId).select("email"));
+        if (objects == null || objects.size() == 0) {
+            result.setResponseCode(ResponseCode.FAIL);
+        } else {
+            result.setData((String) objects.get(0));
+        }
+        return result;
+    }
+
+    @Override
+    public Boolean isHunter(Integer userId) {
+        List<Object> objects = baseMapper.selectObjs(new QueryWrapper<User>().select("role_name").eq("id", userId));
+        if (objects.size() == 0) return false;
+        return "求职者".equals(objects.get(0));
+    }
+
+    @Override
+    public User queryById(Integer id) {
+        User user = baseMapper.selectById(id);
+        user.setPassword(null);
+        user.setCreateTime(null);
+        return user;
     }
 
     @Override

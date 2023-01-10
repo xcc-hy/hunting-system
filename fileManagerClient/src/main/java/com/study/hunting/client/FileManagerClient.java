@@ -26,4 +26,15 @@ public interface FileManagerClient {
 
     @GetMapping("/license/{format}/{licenseName}")
     ResultVO<String> loadLicense(@PathVariable("format") String format, @PathVariable("licenseName") String licenseName);
+
+    @DeleteMapping("/secret/delete/ico/{format}/{name}")
+    ResultVO deleteIco(@PathVariable("format") String format, @PathVariable("name") String name);
+
+    @DeleteMapping("/secret/delete/resume/{format}/{name}")
+    ResultVO deleteResume(@PathVariable("format") String format, @PathVariable("name") String name);
+
+    @DeleteMapping("/secret/delete/license/{format}/{name}")
+    ResultVO deleteLicense(@PathVariable("format") String format, @PathVariable("name") String name);
+
+
 }

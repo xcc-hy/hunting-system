@@ -51,7 +51,7 @@ public class MpGenerator {
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("root");
-        dsc.setUrl("jdbc:mysql://localhost:3306/hunting_application?serverTimezone=UTC");
+        dsc.setUrl("jdbc:mysql://localhost:3306/hunting_user?serverTimezone=UTC");
         mpg.setDataSource(dsc);
 
         // 策略配置
@@ -62,7 +62,7 @@ public class MpGenerator {
         strategy.setRestControllerStyle(true);
         strategy.setEntitySerialVersionUID(true);
 
-        strategy.setInclude(new String[] { "tbl_new_job_application"}); // 需要生成的表
+        strategy.setInclude(new String[] { "tbl_resume_user_relation"}); // 需要生成的表
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表
         // 自定义实体父类
 //         strategy.setSuperEntityClass("java.io.Serializable");

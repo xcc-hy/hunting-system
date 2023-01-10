@@ -26,9 +26,11 @@ public class UserStar implements Serializable {
 
     private Integer jobId;
 
-    private Integer userId;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
-    private String createDate;
+    private Integer userId;
 
     public Integer getId() {
         return id;
@@ -48,24 +50,12 @@ public class UserStar implements Serializable {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-    public String getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(String createDate) {
-        this.createDate = createDate;
-    }
-
     @Override
     public String toString() {
         return "UserStar{" +
             "id=" + id +
             ", jobId=" + jobId +
             ", userId=" + userId +
-            ", createDate=" + createDate +
         "}";
     }
 }

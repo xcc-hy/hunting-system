@@ -18,4 +18,10 @@ public interface FileManagerService {
     ResultVO<String> saveLicense(MultipartFile multipartFile) throws IOException;
 
     ResultVO<String> loadLicense(String format, String licenseName) throws IOException;
+
+    ResultVO deleteResume(String format, String name) throws IOException;
+
+    ResultVO deleteIco(String format, String name) throws IOException;
+
+    ResultVO deleteLicense(String format, String name) throws IOException;
 }

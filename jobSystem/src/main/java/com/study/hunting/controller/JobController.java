@@ -11,6 +11,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * <p>
  *  前端控制器
@@ -36,6 +38,11 @@ public class JobController {
     @ApiOperation(value = "条件查询各个职位信息")
     public ResultVO<Page<Job>> getJobList2(@PathVariable Integer pageSize, @PathVariable Integer pageNum, Job jobCondition, @RequestHeader Integer userId) throws Exception {
         return jobService.getJobList2(jobCondition, pageSize, pageNum, userId);
+    }
+
+    @GetMapping("/listByUserId")
+    public ResultVO<List<Job>> getPublishedJob(@RequestHeader Integer userId) {
+        return jobService.getPublishedJob(userId);
     }
 
     @PutMapping("/secret/manager/freeze/{id}")

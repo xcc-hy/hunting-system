@@ -62,6 +62,11 @@ public class UserController {
         return userService.getCompanyIdById(userId);
     }
 
+    @GetMapping("/getEmailById/{userId}")
+    public ResultVO<String> getEmailById(@PathVariable Integer userId) {
+        return userService.getEmailById(userId);
+    }
+
     @GetMapping("/getNameById/{userId}")
     public ResultVO<String> getNameById(@PathVariable Integer userId) {
         return userService.getNameById(userId);
@@ -88,6 +93,11 @@ public class UserController {
     @GetMapping("/secret/isManager/{userId}")
     public Boolean isManager(@PathVariable Integer userId) {
         return userService.isManager(userId);
+    }
+
+    @GetMapping("/secret/isHunter/{userId}")
+    public Boolean isHunter(@PathVariable Integer userId) {
+        return userService.isHunter(userId);
     }
 
     @GetMapping("/isEnterprise/{userId}")

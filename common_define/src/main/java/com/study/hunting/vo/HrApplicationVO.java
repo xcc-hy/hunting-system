@@ -10,6 +10,16 @@ public class HrApplicationVO extends HrApplication {
 
     private String companyName;
 
+    private String applicationEmail;
+
+    public String getApplicationEmail() {
+        return applicationEmail;
+    }
+
+    public void setApplicationEmail(String applicationEmail) {
+        this.applicationEmail = applicationEmail;
+    }
+
     public String getCompanyName() {
         return companyName;
     }

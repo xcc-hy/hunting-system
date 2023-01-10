@@ -28,8 +28,21 @@ public class JobUserRelation implements Serializable {
 
     private Integer jobId;
 
+    public Integer getResumeId() {
+        return resumeId;
+    }
+
+    public void setResumeId(Integer resumeId) {
+        this.resumeId = resumeId;
+    }
+
+    @ApiModelProperty(value = "附件简历编号")
+    private Integer resumeId;
+
+    @ApiModelProperty(value = "流程，0，未进入；1，笔试流程；2，面试流程；3，流程通过；4，未通过")
     private String progress;
 
+    @ApiModelProperty(value = "状态，0，等待hr审核；1，hr同意进入流程；2，hr拒绝进入流程")
     private String status;
 
     private String createDate;

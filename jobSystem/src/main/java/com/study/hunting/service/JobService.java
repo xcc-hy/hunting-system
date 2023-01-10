@@ -3,7 +3,10 @@ package com.study.hunting.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.study.hunting.domain.Job;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.study.hunting.domain.JobUserRelation;
 import com.study.hunting.vo.ResultVO;
+
+import java.util.List;
 
 /**
  * <p>
@@ -38,4 +41,18 @@ public interface JobService extends IService<Job> {
     ResultVO freezeJob2(Integer id, Integer userId);
 
     ResultVO recallJob(Integer id, Integer userId);
+
+    ResultVO<List<Job>> getByIds(List<Integer> jobIds) throws Exception;
+
+    boolean exist(Integer jobId);
+
+    void addJob(List<JobUserRelation> data) throws Exception;
+
+    void addDeliverNum(Integer jobId);
+
+    boolean isOwner(Integer userId, Integer jobId);
+
+    ResultVO<List<Job>> getPublishedJob(Integer userId);
+
+    void addAuditionNum(Integer jobId);
 }

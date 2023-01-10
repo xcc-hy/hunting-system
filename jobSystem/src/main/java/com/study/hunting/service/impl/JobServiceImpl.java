@@ -6,11 +6,13 @@ import com.study.hunting.client.CompanyClient;
 import com.study.hunting.client.UserClient;
 import com.study.hunting.domain.Job;
 import com.study.hunting.dao.JobMapper;
+import com.study.hunting.domain.JobUserRelation;
 import com.study.hunting.enums.ResponseCode;
 import com.study.hunting.service.JobService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.study.hunting.util.BeanUtils;
 import com.study.hunting.util.DateTimeUtils;
+import com.study.hunting.vo.JobUserRelationVO;
 import com.study.hunting.vo.JobVO;
 import com.study.hunting.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +60,16 @@ public class JobServiceImpl extends ServiceImpl<JobMapper, Job> implements JobSe
             jobs.set(i, jobVO);
         }
     }
+    private JobVO addOwnerName(Job job) throws Exception {
+        JobVO jobVO;
+        if (job instanceof JobVO) {
+            jobVO = (JobVO) job;
+        } else {
+            jobVO = BeanUtils.copyFromFather(job, new JobVO());
+        }
+        if (jobVO.getOwnerId() != null) jobVO.setOwnerName(userClient.getNameById(jobVO.getOwnerId()).getData());
+        return jobVO;
+    }
 
     private void addCompanyName(List<Job> jobs) throws Exception {
         Map<Integer, String> companyNameMap = new HashMap<>(jobs.size());
@@ -78,6 +90,60 @@ public class JobServiceImpl extends ServiceImpl<JobMapper, Job> implements JobSe
             if (job.getCompanyId() != null) jobVO.setCompanyName(companyNameMap.get(job.getCompanyId()));
             jobs.set(i, jobVO);
         }
+    }
+    private JobVO addCompanyName(Job job) throws Exception {
+        JobVO jobVO;
+        if (job instanceof JobVO) {
+            jobVO = (JobVO) job;
+        } else {
+            jobVO = BeanUtils.copyFromFather(job, new JobVO());
+        }
+        if (jobVO.getCompanyName() != null) jobVO.setCompanyName(companyClient.getNameById(jobVO.getCompanyId()).getData());
+        return jobVO;
+    }
+
+    @Override
+    public void addJob(List<JobUserRelation> data) throws Exception {
+        for (int i = 0; i < data.size(); i++) {
+            Job job = baseMapper.selectById(data.get(i).getJobId());
+            job.setAuditionNum(null);
+            job.setDeliverNum(null);
+            job = addOwnerName(job);
+            job = addCompanyName(job);
+            JobUserRelationVO jobUserRelationVO = BeanUtils.copyFromFather(data.get(i), new JobUserRelationVO());
+            jobUserRelationVO.setJob(job);
+            data.set(i, jobUserRelationVO);
+        }
+    }
+
+    @Override
+    public void addDeliverNum(Integer jobId) {
+        Job job = baseMapper.selectOne(new QueryWrapper<Job>().select("deliver_num").eq("id", jobId));
+        job.setDeliverNum(job.getDeliverNum() + 1);
+        baseMapper.updateById(job);
+    }
+
+    @Override
+    public boolean isOwner(Integer userId, Integer jobId) {
+        return baseMapper.selectCount(new QueryWrapper<Job>().eq("owner_id",userId).eq("id", jobId)) > 0;
+    }
+
+    @Override
+    public ResultVO<List<Job>> getPublishedJob(Integer userId) {
+        ResultVO<List<Job>> result = new ResultVO<>();
+        List<Job> jobs = baseMapper.selectList(new QueryWrapper<Job>()
+                .select("id", "name")
+                .eq("owner_id", userId)
+                .in("status", "1", "3"));
+        result.setData(jobs);
+        return result;
+    }
+
+    @Override
+    public void addAuditionNum(Integer jobId) {
+        Job job = baseMapper.selectOne(new QueryWrapper<Job>().select("audition_num").eq("id", jobId));
+        job.setAuditionNum(job.getAuditionNum() + 1);
+        baseMapper.updateById(job);
     }
 
     @Override
@@ -291,6 +357,20 @@ public class JobServiceImpl extends ServiceImpl<JobMapper, Job> implements JobSe
             result.setResponseCode(ResponseCode.NO_OPERATION_PERMISSION);
         }
         return result;
+    }
+
+    @Override
+    public ResultVO<List<Job>> getByIds(List<Integer> jobIds) throws Exception {
+        ResultVO<List<Job>> result = new ResultVO<>();
+        List<Job> jobs = baseMapper.selectList(new QueryWrapper<Job>().in("id", jobIds));
+        addOwnerName(jobs);
+        addCompanyName(jobs);
+        return result;
+    }
+
+    @Override
+    public boolean exist(Integer jobId) {
+        return baseMapper.selectCount(new QueryWrapper<Job>().eq("id", jobId).eq("status", "1")) > 0;
     }
 
     @Override

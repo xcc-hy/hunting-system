@@ -10,6 +10,9 @@ public interface UserClient {
     @GetMapping("/secret/isManager/{userId}")
     Boolean isManager(@PathVariable("userId") Integer userId);
 
+    @GetMapping("/secret/isHunter/{userId}")
+    Boolean isHunter(@PathVariable("userId") Integer userId);
+
     @GetMapping("/isEnterprise/{userId}")
     ResultVO<Boolean> isEnterprise(@PathVariable("userId") Integer userId);
 
@@ -24,4 +27,7 @@ public interface UserClient {
 
     @GetMapping("/getNameById/{userId}")
     ResultVO<String> getNameById(@PathVariable("userId") Integer userId);
+
+    @GetMapping("/getEmailById/{userId}")
+    ResultVO<String> getEmailById(@PathVariable("userId") Integer userId);
 }

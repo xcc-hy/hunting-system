@@ -30,6 +30,12 @@ public class FileManagerController {
         return fileManagerService.loadIco(format, icoName);
     }
 
+    @DeleteMapping("/secret/delete/ico/{format}/{name}")
+    @ApiOperation("头像删除")
+    public ResultVO deleteIco(@PathVariable String format, @PathVariable String name) throws IOException {
+        return fileManagerService.deleteIco(format, name);
+    }
+
     @PostMapping("/secret/save/resume")
     @ApiOperation("简历上传")
     public ResultVO<String> saveResume(MultipartFile multipartFile) throws IOException {
@@ -42,6 +48,12 @@ public class FileManagerController {
         return fileManagerService.loadResume(format, resumeName);
     }
 
+    @DeleteMapping("/secret/delete/resume/{format}/{name}")
+    @ApiOperation("简历删除")
+    public ResultVO deleteResume(@PathVariable String format, @PathVariable String name) throws IOException {
+        return fileManagerService.deleteResume(format, name);
+    }
+
     @PostMapping("/secret/save/license")
     @ApiOperation("营业执照上传")
     public ResultVO<String> saveLicense(MultipartFile multipartFile) throws IOException {
@@ -52,5 +64,11 @@ public class FileManagerController {
     @ApiOperation("营业执照下载")
     public ResultVO<String> loadLicense(@PathVariable String format, @PathVariable String licenseName) throws IOException {
         return fileManagerService.loadLicense(format, licenseName);
+    }
+
+    @DeleteMapping("/secret/delete/license/{format}/{name}")
+    @ApiOperation("营业执照删除")
+    public ResultVO deleteLicense(@PathVariable String format, @PathVariable String name) throws IOException {
+        return fileManagerService.deleteLicense(format, name);
     }
 }

@@ -68,14 +68,16 @@ public class User implements Serializable {
     @ApiModelProperty(value = "个人技能")
     private String skill;
 
+    public void setInterest(String interest) {
+        this.interest = interest;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
     @ApiModelProperty(value = "兴趣爱好")
     private String interest;
-
-    @ApiModelProperty(value = "已沟通过的岗位数量")
-    private Integer deliverNum;
-
-    @ApiModelProperty(value = "收藏的岗位数量")
-    private Integer starNum;
 
     @ApiModelProperty(value = "创建时间")
     private String createTime;
@@ -200,27 +202,6 @@ public class User implements Serializable {
         return interest;
     }
 
-    public void setInterest(String interest) {
-        this.interest = interest;
-    }
-    public Integer getDeliverNum() {
-        return deliverNum;
-    }
-
-    public void setDeliverNum(Integer deliverNum) {
-        this.deliverNum = deliverNum;
-    }
-    public Integer getStarNum() {
-        return starNum;
-    }
-
-    public void setStarNum(Integer starNum) {
-        this.starNum = starNum;
-    }
-    public String getCreateTime() {
-        return createTime;
-    }
-
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
@@ -244,8 +225,6 @@ public class User implements Serializable {
             ", introduce=" + introduce +
             ", skill=" + skill +
             ", interest=" + interest +
-            ", deliverNum=" + deliverNum +
-            ", starNum=" + starNum +
             ", createTime=" + createTime +
         "}";
     }
